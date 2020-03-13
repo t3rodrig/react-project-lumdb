@@ -1,6 +1,9 @@
 import React from 'react';
 import { API_KEY } from './env';
 
+const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
+const BACKDROP_PATH = 'http://image.tmdb.org/t/p/w1280';
+
 class MovieDetail extends React.Component {
   state = {
     movie: {},
@@ -19,11 +22,14 @@ class MovieDetail extends React.Component {
   }
 
   render() {
+    const { movie } = this.state;
     return (
       <div>
-        <h1>{this.state.movie.title}</h1>
-        <h3>{this.state.movie.release_date}</h3>
-        <p>{this.state.movie.overview}</p>
+        <img src={`${BACKDROP_PATH}${movie.backdrop_path}`} alt={movie.title}/>
+        <img src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title}/>
+        <h1>{movie.title}</h1>
+        <h3>{movie.release_date}</h3>
+        <p>{movie.overview}</p>
       </div>
     );
   }

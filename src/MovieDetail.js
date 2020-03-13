@@ -22,7 +22,7 @@ class MovieDetail extends React.Component {
     return (
       <div>
         <h1>{this.state.movie.title}</h1>
-        <h3>{this.state.movie.relese_date}</h3>
+        <h3>{this.state.movie.release_date}</h3>
         <p>{this.state.movie.overview}</p>
       </div>
     );

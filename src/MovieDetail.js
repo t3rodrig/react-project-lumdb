@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Overdrive from 'react-overdrive';
 import { Poster } from './Movie';
 
-const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
-const BACKDROP_PATH = 'http://image.tmdb.org/t/p/w1280';
+const POSTER_PATH = `${process.env.REACT_APP_IMG_URL}/w154`;
+const BACKDROP_PATH = `${process.env.REACT_APP_IMG_URL}/w1280`;
 const params = `api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
 const url = `${process.env.REACT_APP_API_URL}/movie`;
 

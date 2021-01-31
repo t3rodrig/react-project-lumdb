@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Movie from './Movie';
-import { API_KEY } from './env';
+
+const params = `api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
+const url = `${process.env.REACT_APP_API_URL}/discover/movie?${params}`;
 
 class MoviesList extends React.Component {
   state = {
@@ -10,7 +12,7 @@ class MoviesList extends React.Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`);
+      const res = await fetch(url);
       const movies = await res.json();
       this.setState({
         movies: movies.results,

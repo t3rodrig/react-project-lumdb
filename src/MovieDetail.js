@@ -1,11 +1,12 @@
 import React from 'react';
-import { API_KEY } from './env';
 import styled from 'styled-components';
 import Overdrive from 'react-overdrive';
 import { Poster } from './Movie';
 
 const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
 const BACKDROP_PATH = 'http://image.tmdb.org/t/p/w1280';
+const params = `api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+const url = `${process.env.REACT_APP_API_URL}/movie`;
 
 class MovieDetail extends React.Component {
   state = {
@@ -14,7 +15,7 @@ class MovieDetail extends React.Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}?api_key=${API_KEY}&language=en-US`);
+      const res = await fetch(`${url}/${this.props.match.params.id}?${params}`);
       const movie = await res.json();
       this.setState({
         movie,

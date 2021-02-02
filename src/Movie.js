@@ -6,10 +6,10 @@ import Overdrive from 'react-overdrive';
 
 const POSTER_PATH = `${process.env.REACT_APP_IMG_URL}/w154`;
 
-const Movie = ({movie}) => (
+const Movie = ({ movie }) => (
   <Link to={`/${movie.id}`}>
     <Overdrive id={movie.id}>
-      <Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title}/>
+      <Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
     </Overdrive>
   </Link>
 );
@@ -18,9 +18,9 @@ export default Movie;
 
 Movie.propTypes = {
   movie: PropTypes.shape({
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
   }).isRequired,
-}
+};
 
 export const Poster = styled.img`
   box-shadow: 0 0 35px black;

@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  BrowserRouter as Router, 
-  Route, 
+  BrowserRouter as Router,
+  Route,
   Switch,
-  Link
+  Link,
 } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';

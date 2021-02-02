@@ -23,9 +23,10 @@ class MoviesList extends React.Component {
   }
 
   render() {
+    const { movies } = this.state;
     return (
       <MovieGrid>
-        {this.state.movies.map((movie) => (
+        {movies.map((movie) => (
           <Movie key={movie.id} movie={movie} />
         ))}
       </MovieGrid>

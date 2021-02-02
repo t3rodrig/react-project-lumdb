@@ -1,38 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Movie from './Movie';
 
 const params = `api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
 const url = `${process.env.REACT_APP_API_URL}/discover/movie?${params}`;
 
-class MoviesList extends React.Component {
-  state = {
-    movies: [],
-  }
+const MoviesList = () => {
+  const [movies, setMovies] = useState([]);
 
-  async componentDidMount() {
+  const fetchMovies = async () => {
     try {
       const res = await fetch(url);
-      const movies = await res.json();
-      this.setState({
-        movies: movies.results,
-      });
+      const data = await res.json();
+      setMovies(data.results);
     } catch (e) {
-      console.error(e);
+      // eslint-disable-next-line no-console
+      console.log(e);
     }
-  }
+  };
 
-  render() {
-    const { movies } = this.state;
-    return (
-      <MovieGrid>
-        {movies.map((movie) => (
-          <Movie key={movie.id} movie={movie} />
-        ))}
-      </MovieGrid>
-    );
-  }
-}
+  useEffect(() => {
+    fetchMovies();
+  }, []);
+
+  return (
+    <MovieGrid>
+      {movies.map((movie) => (
+        <Movie key={movie.id} movie={movie} />
+      ))}
+    </MovieGrid>
+  );
+};
 
 export default MoviesList;
 

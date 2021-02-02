@@ -5,7 +5,7 @@ import { Poster } from './Movie';
 
 const POSTER_PATH = `${process.env.REACT_APP_IMG_URL}/w154`;
 const BACKDROP_PATH = `${process.env.REACT_APP_IMG_URL}/w1280`;
-const params = `api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+const params = `api_key=${process.env.REACT_APP_API_KEY}&language=en-US`;
 const url = `${process.env.REACT_APP_API_URL}/movie`;
 
 class MovieDetail extends React.Component {
@@ -31,7 +31,7 @@ class MovieDetail extends React.Component {
       <MovieWrapper backdrop={`${BACKDROP_PATH}${movie.backdrop_path}`}>
         <MovieInfo>
           <Overdrive id={movie.id}>
-            <Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title}/>
+            <Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
           </Overdrive>
           <div>
             <h1>{movie.title}</h1>
